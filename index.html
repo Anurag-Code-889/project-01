@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../Library/bootstrap-5.3.7-dist/bootstrap-5.3.7-dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-sm bg-light justify-content-end ">
+    <ul class="navbar-nav ">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Servce</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+      <li class="nav-item">
+        <button class="btn btn-success ms-2 text-dark me-2" data-bs-toggle="modal"
+          data-bs-target="#contactModal">Login</button>
+      </li>
+    </ul>
+  </nav>
+
+  
+  <!-- Chatbox -->
+  <div class="card" id="chatbox">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+      🛍️ ShopBot
+      <button class="btn btn-sm btn-light" onclick="minimizeChat()">—</button>
+    </div>
+    <div id="messages"></div>
+    <div class="card-footer">
+      <div class="input-group">
+        <input type="text" id="input" class="form-control" placeholder="Type a message...">
+        <button class="btn btn-primary" onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating toggle button -->
+  <button id="chatToggle"  onclick="toggleChat()"><img src="1eb05f325ec50a15c8b045f3428d6d5e.jpg" style="width: 40px;height: 55px;" alt=""></button>
+
+
+
+  <!-- LogIn btn -->
+  <div class="modal fade" id="contactModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Contact Us</h5>
+          <button class="btn-close" data-bs-dismiss="modal">.</button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <input type="text" class="form-control mb-3" placeholder="Your Name">
+            <input type="email" class="form-control mb-3" placeholder="Your Email">
+            <input type="password" class="form-control mb-3" placeholder="Password">
+            <button type="submit" class="btn btn-success w-100 ">Login</button>
+            <div class="d-inline-flex ">
+              <button type="button" class="btn btn-success w-100 my-3" id="showBtn">Register</button>
+
+              <a href="../Project/forget_pswd.html" class="nav-link p-2">Forget Password</a>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Register Page -->
+  <div class="modal fade" id="registerModel" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Contact Us</h5>
+          <button class="btn-close" data-bs-dismiss="modal">.</button>
+        </div>
+        <div class="modal-body">
+          <form id="advanceform" onsubmit="return validateform()">
+            <label for="fullname">Full name</label>
+            <input type="text" id="fullname">
+            <div class="error" id="fullnameError"></div>
+
+            <label for="email">Email</label>
+            <input type="text" id="email">
+            <div class="error" id="emailError"></div>
+
+            <label for="password">Password</label>
+            <input type="password" id="password">
+            <div class="error" id="passwordError"></div>
+
+            <label for="age">Age</label>
+            <input type="number" id="age">
+            <div class="error" id="ageError"></div>
+
+            <label for="phone">Phone Number</label>
+            <input type="text" id="phone">
+            <div class="error" id="phoneError"></div>
+
+            <label for="zipcode">Zipcode</label>
+            <input type="text" id="zipcode">
+            <div class="error" id="zipcodeError"></div>
+
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob">
+            <div class="error" id="dobError"></div>
+
+            <label><input type="checkbox" id="terms"> I agree to the terms and conditions</label>
+            <div class="error" id="termsError"></div>
+
+            <button type="submit" value="submit" class="btn">Register</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Home -->
+  <div class="container">
+    <h1 class="text-xl md:text-4xl max-w-xl mx-auto text-center font-bold mt-4">Price History & Tracker</h1>
+    <h2 class="text-base md:text-2xl max-w-xl mx-auto text-center font-medium my-3 hidden md:flex flex-grow">
+      <span>Track prices of your favourite products on</span>
+      <span class="animated-text pr-1 ml-1 svelte-55bhhq"></span>
+    </h2>
+  </div>
+
+  <!-- Carousel items -->
+  <div id="heroCarousel" class="carousel slide mt-4" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+        aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="3000">
+        <img src="../Project/fb0aab0e-dc8c-4dbc-a5ae-57e99d5ccb04.jpeg" class="d-block w-100" alt="Welcome">
+      </div>
+      <div class="carousel-item" data-bs-interval="3000">
+        <img src="../Project/d2b7ae64-1349-47d2-8bd0-1ce7f160a318.jpeg" class="d-block w-100" alt="Services">
+      </div>
+      <div class="carousel-item" data-bs-interval="3000">
+        <img src="../Project/046caa0c-f1ff-401c-9705-857da1800125.jpeg" class="d-block w-100" alt="Contact">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!-- Sercher Bar -->
+  <section>
+    <div class="container mt-5">
+    <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="search-container">
+        <input type="text" class="form-control search-input" placeholder="Search...">
+        <i class="fas fa-search search-icon"></i>
+      </div>
+    </div>
+  </div>   
+  </section>
+
+  <!-- About -->
+  <div class="container mt-3">
+    <div class="text-center">
+      <div class="d-block justify-content-center"></div>
+      <h3>Supports all major e-commerce platforms</h3>
+    </div>
+  </div>
+
+  <!-- Shortcut -->
+  <div class="container-fluid mt-5">
+    <div class="text-center">
+      <div class="d-flex justify-content-center gap-3 flex-wrap ">
+        <a href="#" class="custom-btn nav-link">
+          <button type="button" class="btn btn-outline-light text-primary  text-white bg-dark"> Amazon Price History
+            Tracker</button>
+        </a>
+        <a href="#" class="custom-btn nav-link">
+          <button type="button" class="btn btn-outline-light text-white bg-dark"> Flipkart Price History
+            Tracker</button>
+        </a>
+        <a href="#" class="custom-btn nav-link">
+          <button type="button" class="btn btn-outline-light text-white bg-dark">Amazon Daily Quiz Answers</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Card Section: 4 cards in one row -->
+      <div class="container my-5">
+        <div class="row">
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <img src="./790fa97705464d38f9c3b51e0206cea0.jpg" style="width:100%;" class="card-img-top" alt="Card 1">
+              <div class="card-body">
+                <h5 class="card-title">Girl Kids Section 1</h5>
+                <p class="card-text">Discover Our Cute KidsbCollection.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <img src="./d7282991d58264702207714a9a364d47.jpg" style="width: 300px; height: 350px; "
+                class="card-img-top" alt="Card 2">
+              <div class="card-body">
+                <h5 class="card-title">Boy Kids Section 2</h5>
+                <p class="card-text">Dress Up Your Kids in Style.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <img src="./c87a81e66a4afa933ff5cd06a05373bc.jpg" style="width: 300px; height: 350px; class="
+                card-img-top" alt="Card 3">
+              <div class="card-body">
+                <h5 class="card-title">Mens Section 3</h5>
+                <p class="card-text">Discover the Latest in Men’s Fashion.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <img src="./b2a5f8b6b404338879c44849e9e81e9e.jpg" style="width: 300px; height: 350px; class="
+                card-img-top" alt="Card 4">
+              <div class="card-body">
+                <h5 class="card-title">Women Section 4</h5>
+                <p class="card-text">Trendy & Timeless Women’s Wea.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- footer -->
+    <footer id="contact" class="footer text-light py-5 bg-dark">
+      <div class="container-fluid ">
+        <div class="row align-items-center">
+          <div class="col-md-3">
+            <div class="d-flex align-items-center mb-2">
+              <img src="ny.jpg" alt="Logo" style="width: 50px; height: 50px; margin-right: 10px;">
+              <div>
+                <h5 class="mb-0 fw-bold">Ridgeview</h5>
+                <small class="text-muted">Middle School</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <h6 class="text-uppercase text-primary mb-3">Get in Touch</h6>
+            <ul class="list-unstyled">
+              <li><a href="#" class="footer-link">Home</a></li>
+              <li><a href="#" class="footer-link">About</a></li>
+              <li><a href="#" class="footer-link">Contact</a></li>
+              <li><a href="#" class="footer-link">Service</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h6 class="text-uppercase text-primary mb-3">Get in Touch</h6>
+            <ul class="list-unstyled">
+              <li><a href="#" class="footer-link">Facebook</a></li>
+              <li><a href="#" class="footer-link">Twitter</a></li>
+              <li><a href="#" class="footer-link">Instagram</a></li>
+              <li><a href="#" class="footer-link">YouTube</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h6 class="text-uppercase text-primary mb-3">Get in Touch</h6>
+            <p class="mb-1">500 Terry Francine Street</p>
+            <p class="mb-1">San Francisco, CA 94158</p>
+            <p class="mb-1">Tel: 123-456-7890</p>
+            <p class="mb-0">info@mysite.com</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Resigter Page Popup -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../Library/bootstrap-5.3.7-dist/bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+    <script>        $(document).ready(function () {
+        var myModalRegister = bootstrap.Modal.getInstance(document.getElementById('registerModel'));
+        if (myModalRegister)
+          myModalRegister.hide();
+
+        console.log("Button clicked, modal closed.");
+        // Click event using jQuery
+        $("#showBtn").click(function () {
+          let modalEl = document.getElementById('contactModal');
+          let registerEl = document.getElementById('registerModel');
+
+          let myModalcontact = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
+          myModalcontact.hide();
+
+          let myModalRegister = bootstrap.Modal.getInstance(registerEl) || new bootstrap.Modal(registerEl);
+          myModalRegister.show();
+
+        });
+      });
+      const forms = document.querySelectorAll('.requires-validation')
+      Array.from(forms)
+        .forEach(function (form) {
+          form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+          }, false)
+        })
+    </script>
+
+    <!-- ChatBot Popup -->
+    <script>
+      const chatBtn = document.getElementById('chat-btn');
+      const chatBox = document.getElementById('chat-box');
+      const sendBtn = document.getElementById('send-btn');
+      const chatMessages = document.getElementById('chat-messages');
+      const chatInput = document.getElementById('chat-input');
+
+      // Toggle chat visibility
+      chatBtn.addEventListener('click', () => {
+        chatBox.style.display = (chatBox.style.display === 'flex') ? 'none' : 'flex';
+      });
+
+      // Send message
+      sendBtn.addEventListener('click', () => {
+        const msg = chatInput.value.trim();
+        if (msg) {
+          addMessage('You', msg);
+          chatInput.value = '';
+
+          // Simulate bot reply
+          setTimeout(() => {
+            addMessage('Bot', 'Thanks for your message! We will reply soon.');
+          }, 1000);
+        }
+      });
+
+      // Add message to chat
+      function addMessage(sender, text) {
+        const msgDiv = document.createElement('div');
+        msgDiv.textContent = ${ sender }: ${ text };
+        chatMessages.appendChild(msgDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+    </script>
+
+    <script>
+    const products = [
+      { name: "Nike Flex", price: 1899 },
+      { name: "Adidas Runner", price: 1750 },
+      { name: "Puma Street", price: 1499 }
+    ];
+
+    let cart = [];
+
+    // Toggle Chatbox Open/Close
+    function toggleChat() {
+      const chatbox = document.getElementById("chatbox");
+      const toggleBtn = document.getElementById("chatToggle");
+      chatbox.style.display = "flex";
+      toggleBtn.style.display = "none"; // hide toggle when open
+    }
+
+    // Minimize Chatbox (keep history)
+    function minimizeChat() {
+      document.getElementById("chatbox").style.display = "none";
+      document.getElementById("chatToggle").style.display = "block"; // show toggle again
+    }
+
+    // Send message
+    function sendMessage() {
+      const input = document.getElementById("input");
+      const userMessage = input.value.trim();
+      if (!userMessage) return;
+
+      addMessage(userMessage, "user");
+      input.value = "";
+
+      setTimeout(() => {
+        const reply = getBotReply(userMessage.toLowerCase());
+        addMessage(reply, "bot");
+      }, 500);
+    }
+
+    // Add message to chat
+    function addMessage(text, sender) {
+      const messagesDiv = document.getElementById("messages");
+      const msg = document.createElement("div");
+      msg.className = "message " + sender;
+      msg.innerText = text;
+      messagesDiv.appendChild(msg);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    // Simple rule-based replies
+    function getBotReply(message) {
+      if (message.includes("hello") || message.includes("hi")) {
+        return "Hi! 👋 Welcome to ShopBot. What are you looking for today?";
+      }
+      if (message.includes("shoes") || message.includes("under")) {
+        let reply = "Here are some shoes under ₹2000:\n";
+        products.forEach(p => reply += `- ${p.name} ₹${p.price}\n`);
+        return reply;
+      }
+      if (message.includes("add puma")) {
+        cart.push("Puma Street ₹1499");
+        return "✅ Puma Street has been added to your cart.\n🛒 Cart Total: ₹1499";
+      }
+      if (message.includes("checkout")) {
+        return "Please choose a payment method: 💳 Card, 📱 UPI, 🚚 COD";
+      }
+      if (message.includes("bye")) {
+        return "Thanks for visiting ShopBot ❤️ Have a great day!";
+      }
+      return "❓ Sorry, I didn’t understand. Try asking about shoes, adding items, or checkout.";
+    }
+  </script>
+
+</body>
+</html>
